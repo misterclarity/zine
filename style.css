@@ -24,7 +24,7 @@ h1 {
 
 .zine-page {
   display: block;
-  border: 2px dotted gray;
+  border: 1px dotted gray;
   box-sizing: border-box;
 }
 
@@ -34,32 +34,43 @@ h1 {
 
 .page-1 {
   grid-area: page-1;
+  
 }
 
 .page-2 {
   grid-area: page-2;
+  border-top: 0;
 }
 
 .page-3 {
   grid-area: page-3;
+  border-top: 0;
+  border-left: 0;
 }
 
 .page-4 {
   grid-area: page-4;
+  border-top: 0;
+  border-left: 0;
 }
 
 .page-5 {
   grid-area: page-5;
+  border-top: 0;
+  border-left: 0;
 }
 
 .page-6 {
   grid-area: page-6;
+  border-right: 0;
 }
 
 .page-7 {
   grid-area: page-7;
+  border-right: 0;
 }
 
 .page-8 {
   grid-area: page-8;
+  border-right: 0;
 }
