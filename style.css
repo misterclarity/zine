@@ -2,6 +2,8 @@
 
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
@@ -10,23 +12,25 @@ h1 {
 }
 
 .zine {
+  width: 100vw;
+  height: 100vh;
   display: grid;
-  grid-template-columns: 25vw 25vw 25vw 25vw;
+  grid-template-areas:
+    "page-5 page-4 page-3 page-2"
+    "page-6 page-7 page-8 page-1";
   grid-template-rows: 50vh 50vh;
-  grid-template-areas: 
-    "page-5 | page-4 | page-3 | page-2"
-    "page-6 | page-7 | page-8 | page-1";
+  grid-template-columns: 25vw 25vw 25vw 25vw;
 }
 
 .zine-page {
-/*   display: block; */
+  display: block;
   border: 2px dotted gray;
   box-sizing: border-box;
 }
 
-/* .page-5, .page-4, .page-3, .page-2 {
+.page-5, .page-4, .page-3, .page-2 {
   transform: rotate(180deg);
-} */
+}
 
 .page-1 {
   grid-area: page-1;
