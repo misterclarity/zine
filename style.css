@@ -14,17 +14,20 @@ h1 {
 .zine {
   width: 100vw;
   height: 100vh;
+  background: lightgrey;
+  padding: 1px;
+  grid-gap: 1px 1px;
   display: grid;
   grid-template-areas:
     "page-5 page-4 page-3 page-2"
     "page-6 page-7 page-8 page-1";
-  grid-template-rows: 50vh 50vh;
-  grid-template-columns: 25vw 25vw 25vw 25vw;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .zine-page {
   display: block;
-  border: 1px dashed lightgray;
+  background: white;
   box-sizing: border-box;
   padding: 5px;
   overflow: hidden;
@@ -41,38 +44,29 @@ h1 {
 
 .page-2 {
   grid-area: page-2;
-  border-top: 0;
+  
 }
 
 .page-3 {
   grid-area: page-3;
-  border-top: 0;
-  border-left: 0;
 }
 
 .page-4 {
   grid-area: page-4;
-  border-top: 0;
-  border-left: 0;
 }
 
 .page-5 {
   grid-area: page-5;
-  border-top: 0;
-  border-left: 0;
 }
 
 .page-6 {
   grid-area: page-6;
-  border-right: 0;
 }
 
 .page-7 {
   grid-area: page-7;
-  border-right: 0;
 }
 
 .page-8 {
   grid-area: page-8;
-  border-right: 0;
 }
