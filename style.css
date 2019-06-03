@@ -12,8 +12,8 @@ h1 {
 
 .zine {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  grid-template-rows: 50% 50%;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(2, 50%);
   grid-template-areas:
     "page-5 | page-4 | page-3 | page-2"
     "page-6 | page-7 | page-8 | page-1";
@@ -23,4 +23,40 @@ h1 {
   display: block;
   border: 2px dotted gray;
   box-sizing: border-box;
+}
+
+.page-5, .page-4, .page-3, .page-2 {
+  transform: rotate(180deg);
+}
+
+.page-1 {
+  grid-area: page-1;
+}
+
+.page-2 {
+  grid-area: page-2;
+}
+
+.page-3 {
+  grid-area: page-3;
+}
+
+.page-4 {
+  grid-area: page-4;
+}
+
+.page-5 {
+  grid-area: page-5;
+}
+
+.page-6 {
+  grid-area: page-6;
+}
+
+.page-7 {
+  grid-area: page-7;
+}
+
+.page-8 {
+  grid-area: page-8;
 }
