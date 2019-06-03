@@ -24,8 +24,10 @@ h1 {
 
 .zine-page {
   display: block;
-  border: 1px dotted gray;
+  border: 1px dashed lightgray;
   box-sizing: border-box;
+  padding: 5px;
+  overflow: hidden;
 }
 
 .page-5, .page-4, .page-3, .page-2 {
