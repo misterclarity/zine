@@ -2,7 +2,6 @@
 
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
-  margin: 2em;
 }
 
 h1 {
@@ -12,22 +11,22 @@ h1 {
 
 .zine {
   display: grid;
-  grid-template-columns: repeat(4, 25%);
-  grid-template-rows: repeat(2, 50%);
-  grid-template-areas:
+  grid-template-columns: 25vw 25vw 25vw 25vw;
+  grid-template-rows: 50vh 50vh;
+  grid-template-areas: 
     "page-5 | page-4 | page-3 | page-2"
     "page-6 | page-7 | page-8 | page-1";
 }
 
 .zine-page {
-  display: block;
+/*   display: block; */
   border: 2px dotted gray;
   box-sizing: border-box;
 }
 
-.page-5, .page-4, .page-3, .page-2 {
+/* .page-5, .page-4, .page-3, .page-2 {
   transform: rotate(180deg);
-}
+} */
 
 .page-1 {
   grid-area: page-1;
