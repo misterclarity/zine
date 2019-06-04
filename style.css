@@ -1,15 +1,23 @@
 /* CSS files add styling rules to your content */
 
 body {
-  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-family: sans-serif;
   font-size: 1vw;
   margin: 0;
   padding: 0;
 }
 
 h1 {
+  color: #1c4587;
+  text-align: center;
   font-style: italic;
-  color: #373fff;
+  padding: 0;
+  margin: 0 0 1vh;
+}
+
+.strapline {}
+p {
+  
 }
 
 img {
@@ -39,7 +47,7 @@ img {
   display: block;
   background: white;
   box-sizing: border-box;
-  padding: 5px;
+  padding: 0.5vh;
   overflow: hidden;
 }
 
