@@ -36,7 +36,30 @@ p {
   padding: 1vw;
   box-sizing: border-box;
 }
+
+@media screen {
+  body {
+    max-width: 400px;
+    background: #ead1dc;
+    margin: auto;
+  }
   
+  .zine {
+    background: white;
+    padding: 10px;
+    border-left: 4px solid #741b47;
+    border-bottom: 4px solid #741b47;
+  }
+  
+  .zine-page {
+    margin-top: 10px;
+  }
+}
+
+@media print {
+  @page {
+    size: landscape;
+  }
 .zine {
   box-sizing: border-box;
   width: 100vw;
@@ -99,8 +122,4 @@ p {
   grid-area: page-8;
 }
 
-@media print {
-  @page {
-    size: landscape;
-  }
 }
