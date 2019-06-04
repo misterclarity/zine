@@ -74,7 +74,7 @@ figcaption {
     background: #ead1dc;
     margin: auto;
   }
-  
+
   .zine {
     background: white;
     padding: 10px;
@@ -96,6 +96,11 @@ figcaption {
     font-size: 80%;
   }
   
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+    
   .zine {
     box-sizing: border-box;
     width: 100vw;
