@@ -11,6 +11,10 @@ h1 {
   color: #373fff;
 }
 
+img {
+  width: 100%;
+}
+
 @media print {
   .zine {
     box-sizing: border-box;
