@@ -21,7 +21,9 @@ h2 {
   font-family: monospace;
   text-align: center;
   font-size: 140%;
-  font-weight: 100%;
+  font-weight: normal;
+  margin: 0;
+  padding: 0.5rem 0 0.5rem;
 }
 
 p {
