@@ -26,9 +26,14 @@ h2 {
   padding: 0.5rem 0 0.5rem;
 }
 
+th {
+  text-align: left;
+  background: #c9daf8;
+  color: #073763;
+}
 p {
   margin: 0;
-  padding: 0.5rem 0 0.5rem;
+  padding: 1rem 0 0.5rem;
 }
 
 .cover-img {
