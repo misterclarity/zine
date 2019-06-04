@@ -38,7 +38,29 @@ p {
   font-size: 105%;
 }
 
-.cover-img {
+figure {
+  margin: 0;
+  padding: 0;
+}
+
+.captioned-img {
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+  padding: 0 3rem 0 3rem;
+  box-sizing: border-box;
+}
+
+figcaption {
+  font-size: 80%;
+  font-style: italic;
+  background: #c9daf8;
+  color: #073763;
+  padding: 0;
+  margin: 0;
+}
+
+.full-img {
   object-fit: contain;
   max-height: 100%;
   max-width: 100%;
