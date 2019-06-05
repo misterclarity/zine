@@ -64,7 +64,7 @@ figure {
   object-fit: contain;
   max-height: 100%;
   max-width: 100%;
-  padding: 0 3rem 0 3rem;
+  padding: 0 2rem 0 2rem;
   box-sizing: border-box;
 }
 
@@ -75,7 +75,7 @@ figcaption {
   background: #c9daf8;
   color: #073763;
   padding: 0;
-  margin: 0 3rem 0 3rem;
+  margin: 0 2rem 0 2rem;
 }
 
 .full-img {
@@ -99,7 +99,7 @@ figcaption {
 
 .cc-licence {
   float: right;
-  padding: 1rem 0.5rem 0 0.5rem;
+  margin: 1rem 0.5rem 0 0.5rem;
 }
 
 @media screen {
