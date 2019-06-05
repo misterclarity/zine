@@ -7,6 +7,7 @@
 <link rel="icon" type="image/png"
   href="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-machine-32.png">
 <link rel="stylesheet" href="/style.css">
+<link rel="stylesheet" href="/prism.css">
 
 <main class="zine">
   <header class="zine-page page-1">
@@ -73,7 +74,8 @@
   </section>
   <section class="zine-page page-4">
     <h2>Making zines on the web 🕸️</h2>
-    <p>That magic is what means this web page is also a zine if you print it! Go ahead, try pressing your <button class="print-button">🖨️
+    <p>That magic is what means this web page is also a zine if you print it! Go ahead, try pressing your <button
+        class="print-button">🖨️
         Print</button> button now.
       You will need to set the page to landscape and make sure there's no margins or scaling. We want to print on the
       edge, baby! You should see a preview laid out like this:</p>
@@ -82,33 +84,39 @@
       <figcaption>8 zine pages ready to be 📃 printed ✂️ cut and 🙏 folded </figcaption>
     </figure>
     <p>We're using the template and instructions from: <a
-    href="http://bit.ly/zine-making-on-wikibooks">bit.ly/zine-making-on-wikibooks</a></p>
+        href="http://bit.ly/zine-making-on-wikibooks">bit.ly/zine-making-on-wikibooks</a></p>
   </section>
   <section class="zine-page page-5">
     <table class="zine-instructions">
       <tr>
         <td><b>Step 1:</b> Crease all the lines then fold in half.</td>
-        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-02.png"></td>
+        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-02.png">
+        </td>
       </tr>
       <tr>
         <td><b>Step 2:</b> Cut across the fold halfway through the page.</td>
-        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-03.png"></td>
+        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-03.png">
+        </td>
       </tr>
       <tr>
         <td><b>Step 3:</b> Unfold and there should be a little hole. </td>
-        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-04.png"></td>
+        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-04.png">
+        </td>
       </tr>
       <tr>
         <td><b>Step 4:</b> Fold lengthways.</td>
-        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-05.png"></td>
+        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-05.png">
+        </td>
       </tr>
       <tr>
         <td><b>Step 5:</b> Gently fold the centre until you form a + shape.</td>
-        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-06.png"></td>
+        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-06.png">
+        </td>
       </tr>
       <tr>
         <td><b>Step 6:</b> Now - magic! Fold all the pages around. Page 1 is the front cover, page 8 is the back.</td>
-        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-07.png"></td>
+        <td><img class="mini-img" src="https://cdn.glitch.com/c10b2617-5888-415b-b574-42e2ab8f3484%2Fzine-fold-07.png">
+        </td>
       </tr>
     </table>
     <h2>You are now a published author!</h2>
@@ -120,26 +128,16 @@
       <li><a href="http://bit.ly/rachel-on-print">bit.ly/rachel-on-print</a></li>
       <li><a href="https://bit.ly/rachel-on-grids">bit.ly/rachel-on-grids</a></li>
     </ul>
-    <h1>CSS Grid</h1>
-    <p>First we're going to make our <tt>.zine</tt> class fill the whole page as a grid.</p>
-    <code><pre>
-.zine {
-  width: 100vw;
-  height: 100vh;
+    <h2>CSS Grid</h2>
+    <p>The critical components here are the named areas for the grid. We can draw it like a little ascii diagram in our stylesheet.</p>
+<pre><code class="language-css">.zine {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  justify-items: stretch;
-  align-items: stretch;
-  grid-gap: 2px 2px;
-  background: lightgrey;
   grid-template-areas:
     "page-5 page-4 page-3 page-2"
     "page-6 page-7 page-8 page-1";
 
-}
-  </pre></code>
-
+}</pre></code>
+    
   </section>
   <section class="zine-page page-7">
     <p>More content</p>
@@ -149,11 +147,18 @@
     <h1>Steal this zine!</h1>
     <p>Please take this template and copy it for your own work.</p>
     <div class="glitchButton position-x-right position-y-top"></div>
-    <p>Since it's all hosted on Glitch, this friendly fish will give you the instructions to take a peek at the code and fire up your own version.</p>
-    <a class="cc-licence" rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+    <p>Since it's all hosted on Glitch, this friendly fish will give you the instructions to take a peek at the code and
+      fire up your own version.</p>
+    <a class="cc-licence" rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img
+        alt="Creative Commons Licence" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a>
+    <p>The content and images are licensed under a <a rel="license"
+        href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+    </p>
+    <p>Code highlighting via <a href="https://prismjs.com">Prism.js</a>.</p>
     <h2>Let me know what you write at <a href="https://twitter.com/rowan_m">@rowan_m</a></h2>
   </footer>
 </main>
 
 <script src="/script.js" async defer></script>
+<script src="/prism.js" async defer></script>
 <script src="https://button.glitch.me/button.js" async defer></script>
