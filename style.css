@@ -32,8 +32,6 @@ th {
   color: #073763;
 }
 
-.zine-instructions {}
-
 p {
   margin: 0;
   padding: 0.5rem;
@@ -85,6 +83,15 @@ figcaption {
   max-height: 100%;
   max-width: 100%;
   padding: 1rem;
+  box-sizing: border-box;
+}
+
+.mini-img {
+  object-fit: contain;
+/*   max-height: 40%; */
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
