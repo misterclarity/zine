@@ -136,12 +136,22 @@
     "page-5 page-4 page-3 page-2"
     "page-6 page-7 page-8 page-1";
 
-}</pre></code>
-    
+}</code></pre>
+    <p>Then we can position and rotate each of the pages as we need!</p>
+<pre><code class="language-css">.page-5, .page-4, .page-3, .page-2 {
+    transform: rotate(180deg);
+  }
+  .page-1 { grid-area: page-1; }
+  .page-2 { grid-area: page-2; }
+  /* You get the idea… */</code></pre>
   </section>
   <section class="zine-page page-7">
-    <p>More content</p>
-    <p>Page 7</p>
+    <h2>Print styles</h2>
+    <p>We don't need that grid layout when in the browser, so we're wrapping all of that in a media query.</p>
+<pre><code class="language-css">@media print {
+  /* Styles in here will only be
+     applied when printing! */
+}</code></pre>
   </section>
   <footer class="zine-page page-8">
     <h1>Steal this zine!</h1>
