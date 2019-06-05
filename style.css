@@ -40,10 +40,11 @@ p {
 
 ul {
   margin: 0;
+  list-style: none;
 }
 
 li:before {
-  content: '\x27AB';
+  content: '\21D2';
   margin-left: -20px;
   margin-right: 10px;
 }
