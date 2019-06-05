@@ -38,6 +38,22 @@ p {
   font-size: 105%;
 }
 
+ul {
+  margin: 0;
+}
+
+li:before {
+  content: '\x27AB';
+  margin-left: -20px;
+  margin-right: 10px;
+}
+
+a {
+  font-family: monospace;
+  background: #c9daf8;
+  color: #073763;
+}
+
 figure {
   margin: 0;
   padding: 0;
@@ -52,6 +68,7 @@ figure {
 }
 
 figcaption {
+  font-family: monospace;
   font-size: 80%;
   font-style: italic;
   background: #c9daf8;
