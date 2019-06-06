@@ -43,13 +43,13 @@ ul {
   list-style: none;
 }
 
-li:before {
+.zine-li:before {
   content: '\21D2';
   margin-left: -20px;
   margin-right: 10px;
 }
 
-a {
+.zine-link {
   font-family: monospace;
   background: #c9daf8;
   color: #073763;
