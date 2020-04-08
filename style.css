@@ -169,6 +169,8 @@ figcaption {
 
   .page-5, .page-4, .page-3, .page-2 {
 /*     transform: rotate(180deg) translateX(-0.25px); */
+    transform: rotate(180deg);
+
   }
 
   .page-1 {
