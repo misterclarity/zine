@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding:0;
 }
 
 body {
@@ -26,7 +28,7 @@ h2 {
   text-align: center;
   font-size: 140%;
   font-weight: normal;
-  margin: 0.1rem 0 0 0;
+  margin: 0.2rem 0 0 0;
   padding: 0.2rem 0 0.2rem;
 }
 
@@ -39,11 +41,13 @@ th {
 p {
   margin: 0;
   padding: 0.2rem;
+  padding-top: 0.5rem;
   font-size: 105%;
 }
 
 ul {
   margin: 0;
+  padding-left: 2rem;
   list-style: none;
 }
 
@@ -152,17 +156,12 @@ figcaption {
     display: grid;
     gap: 1.5px;
     background: lightgrey;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-areas:
       "page-5 page-4 page-3 page-2"
       "page-6 page-7 page-8 page-1";
-    justify-items: stretch;
-    align-items: stretch;
   }
 
   .zine-page {
-    display: block;
     background: white;
     padding: .2rem;
     overflow: hidden;
