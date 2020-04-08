@@ -1,5 +1,9 @@
 /* CSS files add styling rules to your content */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
@@ -65,7 +69,6 @@ figure {
   max-height: 100%;
   max-width: 100%;
   padding: 0 2rem 0 2rem;
-  box-sizing: border-box;
 }
 
 figcaption {
@@ -83,7 +86,6 @@ figcaption {
   max-height: 100%;
   max-width: 100%;
   padding: 1rem;
-  box-sizing: border-box;
 }
 
 .mini-img {
@@ -114,6 +116,7 @@ figcaption {
     padding: 10px;
     border-left: 4px solid #741b47;
     border-bottom: 4px solid #741b47;
+    
   }
   
   .zine-page {
@@ -159,7 +162,6 @@ figcaption {
   .zine-page {
     display: block;
     background: white;
-    box-sizing: border-box;
     padding: 0.5vh;
     overflow: hidden;
   }
