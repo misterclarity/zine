@@ -154,7 +154,7 @@ figcaption {
     width: 100vw;
     height: 100vh;
     display: grid;
-    gap: 1.5px;
+    gap: 1px;
     background: lightgrey;
     grid-template-areas:
       "page-5 page-4 page-3 page-2"
@@ -168,7 +168,7 @@ figcaption {
   }
 
   .page-5, .page-4, .page-3, .page-2 {
-    transform: rotate(180deg);
+    transform: rotate(180deg) translateX(-0.25px);
   }
 
   .page-1 {
