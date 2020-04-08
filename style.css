@@ -150,7 +150,7 @@ figcaption {
     width: 100vw;
     height: 100vh;
     display: grid;
-    grid-gap: 1.5px 1.5px;
+    gap: 1.5px;
     background: lightgrey;
     grid-template-rows: 1fr 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
