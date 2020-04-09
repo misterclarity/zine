@@ -1,4 +1,4 @@
-/* CSS files add styling rules to your content */
+/* These are just the article styles, so change these to whatever fits your theme! */
 
 * {
   box-sizing: border-box;
@@ -108,6 +108,8 @@ figcaption {
   margin: 1rem 0.5rem 0 0.5rem;
 }
 
+/* Any styles that you **only** want to appear on a device should go in here! */
+
 @media screen {
   body {
     max-width: 30rem;
@@ -128,12 +130,10 @@ figcaption {
   }
 }
 
+/* Any styles that you want to apply **just** when the zine is printed go in here! */
+
 @media print {
-  @page {
-    size: landscape;
-    margin: 0;
-    bleed: 0;
-  }
+
   
   body {
     font-size: 69%;
@@ -148,6 +148,16 @@ figcaption {
     max-width: 4.4rem;
     padding: 0;
     margin: 0;
+  }
+  
+  /* The styles below here are specifically for creating the page layout.
+   * -> DON'T CHANGE THESE <- unless you know what you're doing!
+   */
+  
+  @page {
+    size: landscape;
+    margin: 0;
+    bleed: 0;
   }
   
   .zine {
