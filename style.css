@@ -1,5 +1,6 @@
 /* These are just the article styles, so change these to whatever fits your theme! */
 
+/* Probably keep this one bit as is though, it's going to make arranging things in print easier for you! */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -8,16 +9,12 @@
 
 body {
   font-family: sans-serif;
-  margin: 0;
-  padding: 0;
 }
 
 h1 {
   color: #1c4587;
   text-align: center;
   font-style: italic;
-  padding: 0;
-  margin: 0;
   font-size: 180%;
 }
 
@@ -39,14 +36,12 @@ th {
 }
 
 p {
-  margin: 0;
   padding: 0.2rem;
   padding-top: 0.5rem;
   font-size: 105%;
 }
 
 ul {
-  margin: 0;
   padding-left: 2rem;
   list-style: none;
 }
@@ -63,11 +58,6 @@ ul {
   color: #073763;
 }
 
-figure {
-  margin: 0;
-  padding: 0;
-}
-
 .captioned-img {
   object-fit: contain;
   max-height: 100%;
@@ -81,7 +71,6 @@ figcaption {
   font-style: italic;
   background: #c9daf8;
   color: #073763;
-  padding: 0;
   margin: 0 1rem 0 1rem;
 }
 
@@ -94,8 +83,6 @@ figcaption {
 
 .mini-img {
   max-width: 10rem;
-  padding: 0;
-  margin: 0;
 }
 
 .glitchButton {
@@ -146,8 +133,6 @@ figcaption {
  
   .mini-img {
     max-width: 4.4rem;
-    padding: 0;
-    margin: 0;
   }
   
   /* The styles below here are specifically for creating the page layout.
