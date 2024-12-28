@@ -1,4 +1,4 @@
-# Welcome to Zine Machine
+# Welcome to Zine Maker
 
 *This is a handy little template for creating zines that you can read online and
 also print! CSS Grid and print stylesheets means you will automatically get a
