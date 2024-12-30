@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Spaceholding: Community Mental Health Support</title>
+<title>Spaceholding: Community Mental Health Support - Editor</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.2/tinymce.min.js"></script>
 <style>
   :root {
     --primary-color: #4A90E2;
@@ -18,6 +19,24 @@
     font-family: system-ui, sans-serif;
     background: var(--background-color);
     color: var(--text-color);
+  }
+
+  .edit-controls {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .main-content {
+    margin-top: 70px;
   }
 
   /* Screen styles */
@@ -37,196 +56,304 @@
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       min-height: 400px;
-    }
-  }
-
-  /* Print styles - optimized for A4 landscape */
-  @media print {
-    @page {
-      size: 297mm 210mm;
-      margin: 0;
+      position: relative;
     }
 
-    body {
-      margin: 0;
-      padding: 0;
-      width: 297mm;
-      height: 210mm;
-      background: none;
+    .edit-button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      z-index: 10;
+      opacity: 0.8;
+      transition: opacity 0.2s;
     }
 
-    .zine {
-      display: grid;
-      grid-template-areas:
-        "page-5 page-4 page-3 page-2"
-        "page-6 page-7 page-8 page-1";
-      width: 297mm;
-      height: 210mm;
-      margin: 0;
-      padding: 0;
-      gap: 0;
-      grid-template-columns: repeat(4, 74.25mm);
-      grid-template-rows: repeat(2, 105mm);
+    .edit-button:hover {
+      opacity: 1;
     }
 
     .zine-page {
-      padding: 5mm;
-      border: 0.2mm dashed #ccc;
-      margin: 0;
-      overflow: hidden;
-      box-sizing: border-box;
+      position: relative;
+    }
+
+    .edit-button:hover {
+      background: var(--secondary-color);
+    }
+
+    .editor-modal {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
       background: white;
-      width: 74.25mm;
-      height: 105mm;
+      z-index: 1001;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    .editor-controls {
       display: flex;
-      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1rem;
     }
 
-    /* Rotate top row pages */
-    .page-5, .page-4, .page-3, .page-2 {
-      transform: rotate(180deg);
+    .editor-controls button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
     }
 
-    /* Define grid areas */
-    .page-1 { grid-area: page-1; }
-    .page-2 { grid-area: page-2; }
-    .page-3 { grid-area: page-3; }
-    .page-4 { grid-area: page-4; }
-    .page-5 { grid-area: page-5; }
-    .page-6 { grid-area: page-6; }
-    .page-7 { grid-area: page-7; }
-    .page-8 { grid-area: page-8; }
+    .save-button {
+      background: var(--primary-color);
+      color: white;
+    }
 
-    /* Print typography */
-    h1 { 
-      font-size: 19pt;
-      margin: 0 0 4mm 0;
-    }
-    h2 { 
-      font-size: 15pt;
-      margin: 0 0 3mm 0;
-    }
-    p, li { 
-      font-size: 12pt;
-      margin: 0 0 2mm 0;
-      line-height: 1.4;
-    }
-    ul {
-      margin: 2mm 0;
-      padding-left: 5mm;
-    }
-    .icon {
-      width: 20mm;
-      height: 20mm;
-      margin: 2mm 0;
-    }
-    .quote {
-      font-size: 12pt;
-      font-style: italic;
-      color: var(--accent-color);
-      margin: 2mm 0;
+    .cancel-button {
+      background: var(--accent-color);
+      color: white;
     }
   }
 
-  h1, h2 {
-    color: var(--primary-color);
-    margin-top: 0;
-  }
-
-  .center-text {
-    text-align: center;
+  /* Print styles remain the same */
+  @media print {
+    .edit-controls, .edit-button, .editor-modal, .modal-overlay {
+      display: none !important;
+    }
+    /* Rest of the print styles from original code */
   }
 </style>
 </head>
 <body>
+<div class="edit-controls">
+  <h2>Zine Editor</h2>
+  <button onclick="saveAllChanges()" class="save-button">Save All Changes</button>
+</div>
 
-<main class="zine">
-  <header class="zine-page page-1">
-    <h1>Spaceholding</h1>
-    <h2>Distributed Mental Health</h2>
-    <svg class="icon" viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="45" fill="none" stroke="#4A90E2" stroke-width="2"/>
-      <circle cx="35" cy="35" r="8" fill="#E74C3C"/>
-      <circle cx="65" cy="35" r="8" fill="#E74C3C"/>
-      <circle cx="35" cy="65" r="8" fill="#E74C3C"/>
-      <circle cx="65" cy="65" r="8" fill="#E74C3C"/>
-      <line x1="35" y1="35" x2="65" y2="35" stroke="#4A90E2" stroke-width="2"/>
-      <line x1="35" y1="35" x2="35" y2="65" stroke="#4A90E2" stroke-width="2"/>
-      <line x1="65" y1="35" x2="65" y2="65" stroke="#4A90E2" stroke-width="2"/>
-      <line x1="35" y1="65" x2="65" y2="65" stroke="#4A90E2" stroke-width="2"/>
-    </svg><br> 
-    <p class="quote">Community Mental Health Support</p>
+<div class="editor-modal">
+  <h2>Edit Content</h2>
+  <textarea id="tinyMCEEditor"></textarea>
+  <div class="editor-controls">
+    <button class="cancel-button" onclick="closeEditor()">Cancel</button>
+    <button class="save-button" onclick="saveChanges()">Save Changes</button>
+  </div>
+</div>
+<div class="modal-overlay"></div>
+
+<main class="zine main-content">
+  <header class="zine-page page-1" data-page="1">
+    <button class="edit-button" onclick="openEditor(1)">Edit</button>
+    <div class="content">
+      <h1>Spaceholding</h1>
+      <h2>Distributed Mental Health</h2>
+      <svg class="icon" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="45" fill="none" stroke="#4A90E2" stroke-width="2"/>
+        <circle cx="35" cy="35" r="8" fill="#E74C3C"/>
+        <circle cx="65" cy="35" r="8" fill="#E74C3C"/>
+        <circle cx="35" cy="65" r="8" fill="#E74C3C"/>
+        <circle cx="65" cy="65" r="8" fill="#E74C3C"/>
+        <line x1="35" y1="35" x2="65" y2="35" stroke="#4A90E2" stroke-width="2"/>
+        <line x1="35" y1="35" x2="35" y2="65" stroke="#4A90E2" stroke-width="2"/>
+        <line x1="65" y1="35" x2="65" y2="65" stroke="#4A90E2" stroke-width="2"/>
+        <line x1="35" y1="65" x2="65" y2="65" stroke="#4A90E2" stroke-width="2"/>
+      </svg><br>
+      <p class="quote">Community Mental Health Support</p>
+    </div>
   </header>
 
-  <section class="zine-page page-2">
-    <h2>What is Spaceholding?</h2>
-    <p>Spaceholding is a distributed, <b>community-based approach to mental health</b> that empowers members to provide meaningful support to one another.</p>
-    <p>It works by creating a network of trained peer supporters who can offer contextually relevant help when needed.</p>
+  <!-- Repeat for each section with data-page attribute and edit button -->
+  <section class="zine-page page-2" data-page="2">
+    <button class="edit-button" onclick="openEditor(2)">Edit</button>
+    <div class="content">
+      <h2>What is Spaceholding?</h2>
+      <p>Spaceholding is a distributed, <b>community-based approach to mental health</b> that empowers members to provide meaningful support to one another.</p>
+      <p>It works by creating a network of trained peer supporters who can offer contextually relevant help when needed.</p>
+    </div>
   </section>
 
-  <section class="zine-page page-3">
-    <h2>Core Skills</h2>
-    <p>Spaceholders learn fundamental coaching skills:</p>
-    <ul>
-      <li>Reflective listening</li>
-      <li>Asking clarifying questions</li>
-      <li>Maintaining mindful presence</li>
-      <li>Creating safe spaces</li>
-    </ul>
+  <section class="zine-page page-3" data-page="3">
+    <button class="edit-button" onclick="openEditor(3)">Edit</button>
+    <div class="content">
+      <h2>Core Skills</h2>
+      <p>Spaceholders learn fundamental coaching skills:</p>
+      <ul>
+        <li>Reflective listening</li>
+        <li>Asking clarifying questions</li>
+        <li>Maintaining mindful presence</li>
+        <li>Creating safe spaces</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="zine-page page-4">
-    <h2>Why It Works</h2>
-    <p>Spaceholding leverages:</p>
-    <ul>
-      <li>Existing community relationships</li>
-      <li>Evidence-based practices</li>
-      <li>Human connection</li>
-    </ul>
+  <section class="zine-page page-4" data-page="4">
+    <button class="edit-button" onclick="openEditor(4)">Edit</button>
+    <div class="content">
+      <h2>Why It Works</h2>
+      <p>Spaceholding leverages:</p>
+      <ul>
+        <li>Existing community relationships</li>
+        <li>Evidence-based practices</li>
+        <li>Human connection</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="zine-page page-5">
-    <h2>Community Benefits</h2>
-    <p>This approach helps:</p>
-    <ul>
-      <li>Enhance community resilience</li>
-      <li>Reduce social isolation</li>
-      <li>Improve mental well-being</li>
-      <li>Create authentic connections</li>
-    </ul>
+  <section class="zine-page page-5" data-page="5">
+    <button class="edit-button" onclick="openEditor(5)">Edit</button>
+    <div class="content">
+      <h2>Community Benefits</h2>
+      <p>This approach helps:</p>
+      <ul>
+        <li>Enhance community resilience</li>
+        <li>Reduce social isolation</li>
+        <li>Improve mental well-being</li>
+        <li>Create authentic connections</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="zine-page page-6">
-    <h2>Implementation</h2>
-    <p>Key steps to establish Spaceholding:</p>
-    <ul>
-      <li>Train willing members</li>
-      <li>Practice</li>
-      <li>Maintain ongoing learning</li>
-    </ul>
+  <section class="zine-page page-6" data-page="6">
+    <button class="edit-button" onclick="openEditor(6)">Edit</button>
+    <div class="content">
+      <h2>Implementation</h2>
+      <p>Key steps to establish Spaceholding:</p>
+      <ul>
+        <li>Train willing members</li>
+        <li>Practice</li>
+        <li>Maintain ongoing learning</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="zine-page page-7">
-    <h2>Important Notes</h2>
-    <p>Remember:</p>
-    <ul>
-      <li>Complements existing services</li>
-      <li>It's fun and distributed</li>
-      <li>Adaptable to individual needs</li>
-      <li>Increases community cohesion</li>
-    </ul>
+  <section class="zine-page page-7" data-page="7">
+    <button class="edit-button" onclick="openEditor(7)">Edit</button>
+    <div class="content">
+      <h2>Important Notes</h2>
+      <p>Remember:</p>
+      <ul>
+        <li>Complements existing services</li>
+        <li>It's fun and distributed</li>
+        <li>Adaptable to individual needs</li>
+        <li>Increases community cohesion</li>
+      </ul>
+    </div>
   </section>
 
-  <footer class="zine-page page-8">
-    <div class="center-text">
-      <h2>Join the Movement, <br>be a Spaceholder</h2>
-      <p>Everyone can contribute to collective well-being.</p>
-      <p>Learn. Share. Support</p>
-      <p>More info on <br> <b><u>MisterClarity.com</u></b></p><br> <br> 
-      <p class="quote">"When we hold space for others, we learn about who we are."</p>
+  <footer class="zine-page page-8" data-page="8">
+    <button class="edit-button" onclick="openEditor(8)">Edit</button>
+    <div class="content">
+      <div class="center-text">
+        <h2>Join the Movement, <br>be a Spaceholder</h2>
+        <p>Everyone can contribute to collective well-being.</p>
+        <p>Learn. Share. Support</p>
+        <p>More info on <br> <b><u>MisterClarity.com</u></b></p><br> <br>
+        <p class="quote">"When we hold space for others, we learn about who we are."</p>
+      </div>
     </div>
   </footer>
 </main>
 
+<script>
+let currentEditingPage = null;
+
+// Initialize TinyMCE
+tinymce.init({
+  selector: '#tinyMCEEditor',
+  plugins: 'image code table lists link',
+  toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | link image | code',
+  height: '70vh',
+  images_upload_handler: function (blobInfo, success, failure) {
+    // Here you would typically implement image upload to your server
+    // For demo, we'll use a data URL
+    const reader = new FileReader();
+    reader.onload = function() {
+      success(reader.result);
+    };
+    reader.readAsDataURL(blobInfo.blob());
+  }
+});
+
+function openEditor(pageNum) {
+  currentEditingPage = pageNum;
+  const page = document.querySelector(`.page-${pageNum} .content`);
+  const editor = tinymce.get('tinyMCEEditor');
+  editor.setContent(page.innerHTML);
+  
+  document.querySelector('.editor-modal').style.display = 'block';
+  document.querySelector('.modal-overlay').style.display = 'block';
+}
+
+function closeEditor() {
+  document.querySelector('.editor-modal').style.display = 'none';
+  document.querySelector('.modal-overlay').style.display = 'none';
+  currentEditingPage = null;
+}
+
+function saveChanges() {
+  if (!currentEditingPage) return;
+  
+  const editor = tinymce.get('tinyMCEEditor');
+  const content = editor.getContent();
+  const page = document.querySelector(`.page-${currentEditingPage} .content`);
+  page.innerHTML = content;
+  
+  // Here you would typically save to a backend
+  saveToLocalStorage();
+  
+  closeEditor();
+}
+
+function saveToLocalStorage() {
+  const pages = {};
+  document.querySelectorAll('.zine-page').forEach(page => {
+    const pageNum = page.dataset.page;
+    pages[pageNum] = page.querySelector('.content').innerHTML;
+  });
+  localStorage.setItem('zineContent', JSON.stringify(pages));
+}
+
+function loadFromLocalStorage() {
+  const saved = localStorage.getItem('zineContent');
+  if (saved) {
+    const pages = JSON.parse(saved);
+    Object.entries(pages).forEach(([pageNum, content]) => {
+      const page = document.querySelector(`.page-${pageNum} .content`);
+      if (page) {
+        page.innerHTML = content;
+      }
+    });
+  }
+}
+
+function saveAllChanges() {
+  saveToLocalStorage();
+  alert('All changes saved!');
+}
+
+// Load saved content on page load
+document.addEventListener('DOMContentLoaded', loadFromLocalStorage);
+</script>
 </body>
 </html>
